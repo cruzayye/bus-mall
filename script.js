@@ -47,7 +47,7 @@ function addImages() {
   //everytime user clicks on an img tallyImgclick function runs
   image.addEventListener('click', tallyImgClick);
   container.appendChild(image);
-  //new image instance
+  //new image instanc
   image = document.createElement('img');
   index = displayRandom(incriment, incriment * 2);
   image.setAttribute('src', 'imgs/' + imgs[index].nameFile);
@@ -71,6 +71,7 @@ function statusBar(){
   container.appendChild(table);
   table.appendChild(tr);
   tr.appendChild(td);
+
 
   td.innerText= progress + '%';
 
@@ -104,6 +105,7 @@ function tallyImgClick(event) {
   }
 
   if(clicks === 14){
+
     newChart();
     container.innerText = '';
 
@@ -132,31 +134,6 @@ function lastPicked (sourceName){
 
 }
 
-function result(){
-  var container = document.getElementById('result');
-  var table = document.createElement('table');
-  var tr = document.createElement('tr');
-  var th = document.createElement('thead');
-  var td = document.createElement('td');
-  th.setAttribute('colspan', '2');
-  container.appendChild(table);
-  table.appendChild(tr);
-  tr.appendChild(th);
-  th.innerText = "result"
-  for( var i = 0; i < imgs.length; i++){
-    tr= document.createElement('tr');
-    td = document.createElement('td');
-    table.appendChild(tr);
-    tr.appendChild(td);
-    td.innerText= imgs[i].nameFile;
-    td = document.createElement('td');
-    tr.appendChild(td);
-    td.innerText= imgs[i].y;
-
-
-
-  }
-}
 // //need to come up with function to display top pics that were chosen
 // function topPics(){
 //   for(i = 0; i < imgs[i].y; i++){
