@@ -3,6 +3,19 @@ var BusImages = function (fileName) {
   this.totalVotes = 0;
 
 }
+//how to display top chosen pics?
+// //we need an array of numbers that just focuses on this.totalVotes
+
+// array.sort((a,b) => a-b) //function that would sort votes in ascending order. 
+// votes=[]; //gotta create a new array that 
+// for(var i =0; i <unages,kebgtglubdex++){
+//   votes.push(images)[index]['totalVotes']
+// }
+// votes.sort((a,b => b-a);
+// var imgscopy = imgs.slice(0);
+// for var index = 0; index < votes.lengthy; index++)
+
+
 
 var imgs = [];
 //how come we dont need he imgs/ folder name bore the name of the .jpg?
@@ -59,7 +72,7 @@ function statusBar(){
   table.appendChild(tr);
   tr.appendChild(td);
   
-  td.innerText= status + '%';
+  td.innerText= progress + '%';
 
 }
 
@@ -68,7 +81,7 @@ function displayRandom(min, max) {
 }
 
 var clicks = 0;
-status = 0 ;
+var progress = 0;
 
 //iside this code we collect the file name of the img chose/
 function tallyImgClick(event) {
@@ -83,23 +96,21 @@ function tallyImgClick(event) {
     // for (statBar=1; statBar<8; statBar++){
     //   status++;
     // }
-    status++;
+    progress += 7;
     statusBar();
     clicks++;
     addImages();
-    lastPicked();
+    lastPicked(sourceName);
   }
 
-  function lastPicked (){
-    var container= document.getElementById('lastClicked');
-    var img = document.createElement('img');
-    img.setAttribute('src', 'imgs/' + sourceName);
-    container.appendChild(img);
-    // image.setAttribute('src', 'imgs/' + imgs[index].nameFile);
+  if(clicks === 14){
+    result();
+    container.innerText = '';
 
-  
 
   }
+
+
 
   for (i = 0; i < imgs.length; i++) {
     if (sourceName === imgs[i].nameFile) {
@@ -109,14 +120,51 @@ function tallyImgClick(event) {
   }
   console.log(sourceName);
 }
-//need to come up with function to display top pics that were chosen
-function topPics(){
-  for(i = 0; i < imgs[i].totalVotes; i++){
-    console.log(totalVotes);
+
+function lastPicked (sourceName){
+  var container= document.getElementById('lastClicked');
+  var img = document.createElement('img');
+  img.setAttribute('src', 'imgs/' + sourceName);
+  container.appendChild(img);
+  // image.setAttribute('src', 'imgs/' + imgs[index].nameFile);
+
+
+
+}
+
+function result(){
+  var container = document.getElementById('result');
+  var table = document.createElement('table');
+  var tr = document.createElement('tr');
+  var th = document.createElement('thead');
+  var td = document.createElement('td');
+  th.setAttribute('colspan', '2');
+  container.appendChild(table);
+  table.appendChild(tr);
+  tr.appendChild(th);
+  th.innerText = "result"
+  for( var i = 0; i < imgs.length; i++){
+    tr= document.createElement('tr');
+    td = document.createElement('td');
+    table.appendChild(tr);
+    tr.appendChild(td);
+    td.innerText= imgs[i].nameFile;
+    td = document.createElement('td');
+    tr.appendChild(td);
+    td.innerText= imgs[i].totalVotes;
+    
+    
+
   }
+}
+// //need to come up with function to display top pics that were chosen
+// function topPics(){
+//   for(i = 0; i < imgs[i].totalVotes; i++){
+//     console.log(totalVotes);
+//   }
 
   
-}
+
 window.addEventListener('load', addImages);
 // window.addEventListener('load', statusBar);
 
