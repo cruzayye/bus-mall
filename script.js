@@ -1,15 +1,15 @@
 var BusImages = function (fileName) {
   this.nameFile = fileName;
-  this.totalVotes = 0;
-
+  this.y = 0;
+  this.label = fileName.substring(0, fileName.length - 4);
 }
 //how to display top chosen pics?
-// //we need an array of numbers that just focuses on this.totalVotes
+// //we need an array of numbers that just focuses on this.y
 
-// array.sort((a,b) => a-b) //function that would sort votes in ascending order. 
-// votes=[]; //gotta create a new array that 
+// array.sort((a,b) => a-b) //function that would sort votes in ascending order.
+// votes=[]; //gotta create a new array that
 // for(var i =0; i <unages,kebgtglubdex++){
-//   votes.push(images)[index]['totalVotes']
+//   votes.push(images)[index]['y']
 // }
 // votes.sort((a,b => b-a);
 // var imgscopy = imgs.slice(0);
@@ -37,7 +37,7 @@ imgs.push(new BusImages('wine_glass.jpg'));
 
 function addImages() {
   var container = document.getElementById('container');
-  //this code clears the images instead of adding more images to it. 
+  //this code clears the images instead of adding more images to it.
   container.innerText = '';
   var image = document.createElement('img');
   //here we are  delclaring function to only display pics between 1-5 from the array
@@ -47,7 +47,7 @@ function addImages() {
   //everytime user clicks on an img tallyImgclick function runs
   image.addEventListener('click', tallyImgClick);
   container.appendChild(image);
-  //new image instance
+  //new image instanc
   image = document.createElement('img');
   index = displayRandom(incriment, incriment * 2);
   image.setAttribute('src', 'imgs/' + imgs[index].nameFile);
@@ -71,7 +71,8 @@ function statusBar(){
   container.appendChild(table);
   table.appendChild(tr);
   tr.appendChild(td);
-  
+
+
   td.innerText= progress + '%';
 
 }
@@ -90,8 +91,8 @@ function tallyImgClick(event) {
   //this grabs the last instance of '/' by using -1
   var sourceName = source[source.length - 1];
   //this stops addImages function once use clicks 14xs
-  if(clicks < 14){ 
-    // i<8  means that each time an image is clicked i++ is going to run up until i = 7 instead of looping we could run status++; 7 times wich would return the number 7/ if we started statBar=0 because 0 would technically be 1 it would count by incrremnts of 7 so we can do for(statBar=0; statBar<7; statBar++; which would be the same.)  
+  if(clicks < 14){
+    // i<8  means that each time an image is clicked i++ is going to run up until i = 7 instead of looping we could run status++; 7 times wich would return the number 7/ if we started statBar=0 because 0 would technically be 1 it would count by incrremnts of 7 so we can do for(statBar=0; statBar<7; statBar++; which would be the same.)
 
     // for (statBar=1; statBar<8; statBar++){
     //   status++;
@@ -104,7 +105,8 @@ function tallyImgClick(event) {
   }
 
   if(clicks === 14){
-    result();
+
+    newChart();
     container.innerText = '';
 
 
@@ -114,8 +116,8 @@ function tallyImgClick(event) {
 
   for (i = 0; i < imgs.length; i++) {
     if (sourceName === imgs[i].nameFile) {
-      console.log(imgs[i].totalVotes++);
-      
+      console.log(imgs[i].y++);
+
     }
   }
   console.log(sourceName);
@@ -132,116 +134,13 @@ function lastPicked (sourceName){
 
 }
 
-function result(){
-  var container = document.getElementById('result');
-  var table = document.createElement('table');
-  var tr = document.createElement('tr');
-  var th = document.createElement('thead');
-  var td = document.createElement('td');
-  th.setAttribute('colspan', '2');
-  container.appendChild(table);
-  table.appendChild(tr);
-  tr.appendChild(th);
-  th.innerText = "result"
-  for( var i = 0; i < imgs.length; i++){
-    tr= document.createElement('tr');
-    td = document.createElement('td');
-    table.appendChild(tr);
-    tr.appendChild(td);
-    td.innerText= imgs[i].nameFile;
-    td = document.createElement('td');
-    tr.appendChild(td);
-    td.innerText= imgs[i].totalVotes;
-    
-    
-
-  }
-}
 // //need to come up with function to display top pics that were chosen
 // function topPics(){
-//   for(i = 0; i < imgs[i].totalVotes; i++){
-//     console.log(totalVotes);
+//   for(i = 0; i < imgs[i].y; i++){
+//     console.log(y);
 //   }
 
-  
+
 
 window.addEventListener('load', addImages);
 // window.addEventListener('load', statusBar);
-
-
-
-  
-    
-  //  if(sourceName = jpg.totalVotes(jpg.busImages)){
-  //    this.totalVotes++;
-  //  }
-  
-
-    // console.log(this.src.substr(event.target.src.lastIndexOf('/')));
-    // 
-
-
-  //og code for getting the last part of the img
-  // window.alert(this.href.substr(this.href.lastIndexOf('/') + 1));
-
-  
-
-
-
-
-// ===================================  MARKS CODE ============================
-
-// var BusMallImage = function(fileName) {
-//     this.fileName = fileName;    
-//     this.totalVotes = 0;
-//   }
-  
-//   var images = [];
-//   images.push(new BusMallImage('bag.jpg'));
-//   images.push(new BusMallImage('banana.jpg'));
-//   images.push(new BusMallImage('boots.jpg'));
-//   images.push(new BusMallImage('chair.jpg'));
-//   images.push(new BusMallImage('cthulhu.jpg'));
-//   images.push(new BusMallImage('dragon.jpg'));
-//   images.push(new BusMallImage('pen.jpg'));
-//   images.push(new BusMallImage('scissors.jpg'));
-//   images.push(new BusMallImage('shark.jpg'));
-//   images.push(new BusMallImage('sweep.jpg'));
-//   images.push(new BusMallImage('unicorn.jpg'));
-//   images.push(new BusMallImage('usb.jpg'));
-//   images.push(new BusMallImage('water_can.jpg'));
-//   images.push(new BusMallImage('wine_glass.jpg'));
-  
-//   function addImages() {
-//     var container = document.getElementById('container');    
-//     container.innerText = '';
-//     var image = document.createElement('img');
-//     var index = generateRandom(0, images.length);
-//     image.setAttribute('src', 'imgs/'+images[index].fileName);
-//     image.addEventListener('click', recordImageClick);
-//     container.appendChild(image);
-//     image = document.createElement('img');
-//     index = generateRandom(0, images.length);
-//     image.setAttribute('src', 'imgs/'+images[index].fileName);
-//     image.addEventListener('click', recordImageClick);
-//     container.appendChild(image);
-//     image = document.createElement('img');
-//     index = generateRandom(0, images.length);
-//     image.setAttribute('src', 'imgs/'+images[index].fileName);
-//     image.addEventListener('click', recordImageClick);
-//     container.appendChild(image);
-//   }
-  
-//   function generateRandom(min, max) {
-//     return Math.floor((Math.random() * (max - min)) + min);    
-//   }
-  
-//   function recordImageClick(event) {
-//     console.log(event.target.src);    
-//     addImages();
-//   }
-  
-//   window.addEventListener('load', addImages);
-
-
-
