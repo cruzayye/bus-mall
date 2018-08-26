@@ -3,9 +3,6 @@ var BusImages = function (fileName) {
   this.totalVotes = 0;
 
 }
-status = 0 ;
-
-
 
 var imgs = [];
 //how come we dont need he imgs/ folder name bore the name of the .jpg?
@@ -25,8 +22,6 @@ imgs.push(new BusImages('water_can.jpg'));
 imgs.push(new BusImages('wine_glass.jpg'));
 // console.log(imgs[1].nameFile);
 
-//had to put these to lines in global scope otherwise 
-
 function addImages() {
   var container = document.getElementById('container');
   //this code clears the images instead of adding more images to it. 
@@ -40,22 +35,18 @@ function addImages() {
   image.addEventListener('click', tallyImgClick);
   container.appendChild(image);
   //new image instance
-
-
   image = document.createElement('img');
   index = displayRandom(incriment, incriment * 2);
   image.setAttribute('src', 'imgs/' + imgs[index].nameFile);
   image.addEventListener('click', tallyImgClick);
   container.appendChild(image);
   //new image instance
-
   image = document.createElement('img');
   index = displayRandom(incriment * 2, imgs.length);
   image.setAttribute('src', 'imgs/' + imgs[index].nameFile);
   image.addEventListener('click', tallyImgClick);
   container.appendChild(image);
 }
-
 
 //had to put these two lines in global otherwise a new table would be created for each click and it would mess up gutters
 var table = document.createElement('table');
@@ -72,16 +63,12 @@ function statusBar(){
 
 }
 
-
-
 function displayRandom(min, max) {
   return Math.floor((Math.random() * (max - min)) + min);
 }
 
-
-
 var clicks = 0;
-
+status = 0 ;
 
 //iside this code we collect the file name of the img chose/
 function tallyImgClick(event) {
@@ -121,11 +108,8 @@ function tallyImgClick(event) {
     }
   }
   console.log(sourceName);
-
 }
-
-
-
+//need to come up with function to display top pics that were chosen
 function topPics(){
   for(i = 0; i < imgs[i].totalVotes; i++){
     console.log(totalVotes);
