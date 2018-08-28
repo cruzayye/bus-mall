@@ -65,27 +65,32 @@ function addImages() {
 var table = document.createElement('table');
 var tr = document.createElement('tr');
 
-function statusBar(){
-  var container = document.getElementById('imgClicked');
-  var td = document.createElement('td');
-  container.appendChild(table);
-  table.appendChild(tr);
-  tr.appendChild(td);
+// function statusBar(){
+//   var container = document.getElementById('imgClicked');
+//   var td = document.createElement('td');
+//   container.appendChild(table);
+//   table.appendChild(tr);
+//   tr.appendChild(td);
 
 
-  td.innerText= progress + '%';
+//   td.innerText= progress + '%';
 
-}
+// }
 
 function displayRandom(min, max) {
   return Math.floor((Math.random() * (max - min)) + min);
 }
+
+
 
 var clicks = 0;
 var progress = 0;
 
 //iside this code we collect the file name of the img chose/
 function tallyImgClick(event) {
+  document.getElementById('progress-bar').style.width = Math.round(clicks / 13 * 100) + '%';
+
+
   // var i = 1
   var source = event.target.src.split('/');
   //this grabs the last instance of '/' by using -1
@@ -98,17 +103,17 @@ function tallyImgClick(event) {
     //   status++;
     // }
     progress += 7;
-    statusBar();
+    // statusBar();
     clicks++;
     addImages();
     lastPicked(sourceName);
   }
 
   if(clicks === 14){
-
     newChart();
     container.innerText = '';
-
+    
+    
 
   }
 
@@ -133,6 +138,35 @@ function lastPicked (sourceName){
 
 
 }
+
+function reload(){
+  // Location.reload()
+  window.location.reload();
+  
+}
+
+
+// var button = document.getElementById('reset');
+// button.addEventListener('click', reset);
+
+
+
+// function reset(event){
+//   Location.reload();
+
+  
+// }
+// function reset(event){
+//   var button = document.getElementById('reset');
+//   button.addEventListener(event.this.Location.reload());
+
+  
+// }
+// function showStudentDetails(event) {
+//   var studentNameContainer = document.getElementById('student-name');
+//   studentNameContainer.innerText = event.target.innerText;
+// }
+
 
 // //need to come up with function to display top pics that were chosen
 // function topPics(){
