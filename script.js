@@ -138,9 +138,8 @@ function lastPicked (sourceName){
 
 
 }
-
+//can we add event listener instead?
 function reload(){
-  // Location.reload()
   window.location.reload();
   
 }
