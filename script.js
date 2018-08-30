@@ -22,6 +22,8 @@ imgs.push(new BusImages('water_can.jpg'));
 imgs.push(new BusImages('wine_glass.jpg'));
 // console.log(imgs[1].nameFile);
 
+
+
 function addImages() {
   var container = document.getElementById('container');
   //this code clears the images instead of adding more images to it.
@@ -46,6 +48,8 @@ function addImages() {
   image.setAttribute('src', 'imgs/' + imgs[index].nameFile);
   image.addEventListener('click', tallyImgClick);
   container.appendChild(image);
+  localStorage.setItem('images', JSON.stringify(imgs));
+  
 }
 
 var table = document.createElement('table');
@@ -73,14 +77,15 @@ function tallyImgClick(event) {
     newChart();
     container.innerText = '';
   }
-
+  
   for (i = 0; i < imgs.length; i++) {
     if (sourceName === imgs[i].nameFile) {
       console.log(imgs[i].y++);
-
+      
     }
   }
   console.log(sourceName);
+  localStorage.setItem('imgs', JSON.stringify(imgs));
 }
 
 function lastPicked (sourceName){
@@ -91,7 +96,20 @@ function lastPicked (sourceName){
 }
 function reload(){
   window.location.reload();
+
   
+  function localImages() {
+  
+    var localImg = JSON.parse(localStorage.getItem('imgs'));   /////Parses 'imgs' in localStorage and puts it into localImg./////
+    if (localImg != null) {
+      imgs = [];
+      for (var index = 0; index < localImg.length; index++) {
+        var img = localImg [index];
+        imgs.push(new BusImages(img.nameFile, img.y, img.label));
+      }
+    }                              
+  }
+  localImages();
 }
 
 window.addEventListener('load', addImages);
