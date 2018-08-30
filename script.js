@@ -1,26 +1,28 @@
-var BusImages = function (fileName) {
+var BusImages = function (fileName, y, label) {
   this.nameFile = fileName;
-  this.y = 0;
-  this.label = fileName.substring(0, fileName.length - 4);
+  this.y = y;
+  this.label = label;
 }
 
 var imgs = [];
 //how come we dont need he imgs/ folder name bore the name of the .jpg?
-imgs.push(new BusImages('bag.jpg'));
-imgs.push(new BusImages('banana.jpg'));
-imgs.push(new BusImages('boots.jpg'));
-imgs.push(new BusImages('chair.jpg'));
-imgs.push(new BusImages('cthulhu.jpg'));
-imgs.push(new BusImages('dragon.jpg'));
-imgs.push(new BusImages('pen.jpg'));
-imgs.push(new BusImages('scissors.jpg'));
-imgs.push(new BusImages('shark.jpg'));
-imgs.push(new BusImages('sweep.jpg'));
-imgs.push(new BusImages('unicorn.jpg'));
-imgs.push(new BusImages('usb.jpg'));
-imgs.push(new BusImages('water_can.jpg'));
-imgs.push(new BusImages('wine_glass.jpg'));
+imgs.push(new BusImages('bag.jpg', 0, 'Bag'));
+imgs.push(new BusImages('banana.jpg', 0, 'Banana'));
+imgs.push(new BusImages('boots.jpg', 0, 'Boots'));
+imgs.push(new BusImages('chair.jpg', 0, 'Chair'));
+imgs.push(new BusImages('cthulhu.jpg', 0, 'Cthulhu'));
+imgs.push(new BusImages('dragon.jpg', 0, 'Dragon'));
+imgs.push(new BusImages('pen.jpg', 0, 'Pen'));
+imgs.push(new BusImages('scissors.jpg', 0, 'Scissors'));
+imgs.push(new BusImages('shark.jpg', 0, 'Shark'));
+imgs.push(new BusImages('sweep.jpg', 0, 'Sweep'));
+imgs.push(new BusImages('unicorn.jpg', 0, 'Uncorn'));
+imgs.push(new BusImages('usb.jpg', 0, 'Usb'));
+imgs.push(new BusImages('water_can.jpg', 0, 'Water Can'));
+imgs.push(new BusImages('wine_glass.jpg', 0, 'Wine Glass'));
 // console.log(imgs[1].nameFile);
+
+
 
 function addImages() {
   var container = document.getElementById('container');
@@ -46,6 +48,7 @@ function addImages() {
   image.setAttribute('src', 'imgs/' + imgs[index].nameFile);
   image.addEventListener('click', tallyImgClick);
   container.appendChild(image);
+  // localStorage.setItem('images', JSON.stringify(imgs));
 }
 
 var table = document.createElement('table');
@@ -68,19 +71,20 @@ function tallyImgClick(event) {
     addImages();
     lastPicked(sourceName);
   }
-
+  
   if(clicks === 14){
     newChart();
     container.innerText = '';
   }
-
+  
   for (i = 0; i < imgs.length; i++) {
     if (sourceName === imgs[i].nameFile) {
       console.log(imgs[i].y++);
-
+      
     }
   }
   console.log(sourceName);
+  localStorage.setItem('imgs', JSON.stringify(imgs));
 }
 
 function lastPicked (sourceName){
@@ -91,7 +95,19 @@ function lastPicked (sourceName){
 }
 function reload(){
   window.location.reload();
-  
 }
 
+function imagesLocal() {
+
+  var localImg = JSON.parse(localStorage.getItem('imgs'));   /////Parses 'imgs' in localStorage and puts it into localImg./////
+  if (localImg != null) {
+    imgs = [];
+    for (var index = 0; index < localImg.length; index++) {
+      var img = localImg[index];
+      imgs.push(new BusImages(img.nameFile, img.y, img.label));
+    }
+  }                              
+}
+
+window.addEventListener('load', imagesLocal);
 window.addEventListener('load', addImages);
