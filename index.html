@@ -7,101 +7,39 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script type="text/javascript" src="script.js"></script>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <script type='text/javascript' src='chart.js'></script>
+    <script type='text/javascript' src='canvasjs.min.js'></script>
+    <title>Bus-Mall</title>
 
-
-    <title>assignment3</title>
-
-
-    <style>
-    </style>
 </head>
-
 <body>
     <header>
-     <h1>Bus-Mall Survey</h1>
-     <h2>Click on your favorite image 14 times!</h2>
-
+        <h1>Bus-Mall Survey</h1>
+        <h2>Click on your favorite image 14 times!</h2>
     </header>
+
     <div id="lastClicked">
-          
-
-        </div>
-    <div id="container">
-        <!-- <img src="imgs/bag.jpg"/>
-        <img src="imgs/banana.jpg"/>
-        <img src="imgs/boots.jpg"/> -->
-
     </div>
 
+    <div id="container">
+    </div>
 
     <div>
         <table id="imgClicked">
 
         </table>
-
-
-
     </div>
-    <!-- <table id="table"></table> -->
-    <table id="status-bar">
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
     
-
-    </table>
-    
-    
-    <section>
-        <p>progress</p>
-        <p>Donzo</p>
-        
-    </section>
-    <section>
-        <h2>Top pics</h2>
+    <section id="progress-container">
+        <h3>Status Bar Content</h3>
+        <div id="progress-bar"></div>
     </section>
 
-
+    <section id = "result">
+    </section>
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    <button type="button" id="reset" onclick="reload()">reset</button>
 </body>
 
 </html>
 
-
-<!-- <script>
-        function displayImages(){
-            var container = document.getElementById('container');
-            console.log(container);
-            var img = document.createElement('img');
-            img.setAttribute("src", "imgs/bag.jpg");
-            container.appendChild(img);
-            
-
-        }
-
-        
-        //in order for functions to run properly use this to run functions
-        window.addEventListener('load', displayImages);
-
-
-
-
-
-
-
-    </script> -->
-
-<!-- status = 0
-    td.innerText= 7 + '%'; -->
