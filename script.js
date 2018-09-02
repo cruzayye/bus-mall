@@ -1,3 +1,26 @@
+
+
+function introduction(){
+  var container = document.getElementById('intro');
+  var rules  = document.createElement('p');
+  container.appendChild(rules);
+  rules.innerText= "RuleThe following is a data analysis survey to see which products we should continue to sell and which we should probably get rid of. you will be presented with 3 pics choose your favorit one. Do this 15 times please";
+  var ready = document.createElement('button');
+  ready.setAttribute('onclick', 'hello()');
+  ready.innerText='ready'
+  container.appendChild(ready);
+
+  
+}
+
+function hello(){
+  // var container = document.getElementById('intro');
+  // container.style.display="none";
+  document.getElementById("intro").style.display = "none";
+}
+
+//problem might be that we can only pass 1 pair when setting attribute
+
 var BusImages = function (fileName, y, label) {
   this.nameFile = fileName;
   this.y = y;
@@ -5,7 +28,7 @@ var BusImages = function (fileName, y, label) {
 }
 
 var imgs = [];
-//how come we dont need he imgs/ folder name bore the name of the .jpg?
+//how come we dont need the imgs/ folder name before the name of the .jpg?//ans:line35 sets the attr.
 imgs.push(new BusImages('bag.jpg', 0, 'Bag'));
 imgs.push(new BusImages('banana.jpg', 0, 'Banana'));
 imgs.push(new BusImages('boots.jpg', 0, 'Boots'));
@@ -36,7 +59,7 @@ function addImages() {
   //everytime user clicks on an img tallyImgclick function runs
   image.addEventListener('click', tallyImgClick);
   container.appendChild(image);
-  //new image instanc
+  // new image instance
   image = document.createElement('img');
   index = displayRandom(incriment, incriment * 2);
   image.setAttribute('src', 'imgs/' + imgs[index].nameFile);
@@ -62,17 +85,19 @@ function displayRandom(min, max) {
 var clicks = 0;
 var progress = 0;
 function tallyImgClick(event) {
-  document.getElementById('progress-bar').style.width = Math.round(clicks / 13 * 100) + '%';
+  // document.getElementById('progress-bar').style.width = Math.round(clicks / 13 * 100) + '%';
+  document.getElementById('progress-bar').style.width = Math.round(clicks / 14 * 100) + '%';
+
+
   var source = event.target.src.split('/');
   var sourceName = source[source.length - 1];
-  if(clicks < 14){
-    progress += 7;
+  if(clicks < 15){
     clicks++;
     addImages();
     lastPicked(sourceName);
   }
   
-  if(clicks === 14){
+  if(clicks === 15){
     newChart();
     container.innerText = '';
   }
@@ -109,5 +134,10 @@ function imagesLocal() {
   }                              
 }
 
+window.addEventListener('load', introduction);
 window.addEventListener('load', imagesLocal);
 window.addEventListener('load', addImages);
+
+// For more infor on localStorage:
+// http://diveintohtml5.info/storage.html
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage

@@ -1,10 +1,45 @@
 body{
     background-color: #330E0C;
+    margin: 0px;
 }
 header{
     background-color:#FF443B;
     color:white;
+    margin-top: 0;
 }
+
+h1{
+    margin-top: 0;
+    padding: 2%;
+    text-align: center; 
+}
+/* this is the goal:Need to get the page to freeze https://www.goodyear.com/en-US/tire/search/1993_Lexus_GS300_Standard_3575 */
+
+#intro {
+    position: fixed;
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    margin: 0 20%;
+    padding: 2%;
+    margin-top: 5%;
+    border: 10px black solid;
+    
+}
+
+#ready{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+
+
+
+
 #container {
     display: flex;
     justify-content: center;
@@ -75,7 +110,7 @@ p{
    
 }
 
-p:nth-of-type(1){
+/* p:nth-of-type(1){
     position: relative;
     right: 391px;
 }
@@ -84,7 +119,7 @@ p:nth-of-type(1){
     position: relative;
     left: 388px;
     
-}  
+}   */
 
 h2{
     color: white;
@@ -96,23 +131,53 @@ h3{
 }
 
 #progress-container {
-    box-shadow: 0 0 4px aqua;
+    box-shadow: 0 0 4px white;
     border-radius: 13px;
     position: relative;
     height: 26px;
+    margin-top: 2%;
+    margin-right: 2%;
+    margin-left: 2%;
     }
+#progress-container h3{
+    color: white;
+
+}
+
     
-    #progress-bar {
+#progress-bar {
     border-radius: 13px;
     height: 26px;
     width: 0;
-    background-color: aqua;
+    background-color: #FF443B;
     position: absolute;
     top: -1px;
     left: 0;
     z-index: -1;
     }
 
+
+
+#chartContainer{
+    display: flex; 
+    justify-content: center;
+    width: 50%;
+    margin-top: 2%;
+    /* position: absolute; */
+    
+}
+
+#reset-button{
+    text-align: center;
+    position: relative;
+    bottom: 10%;
+
+
+}
+.canvasjs-chart-credit{
+    display: none;
+
+}
     
 
 @media (max-width: 980px) {

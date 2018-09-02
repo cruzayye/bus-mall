@@ -1,12 +1,12 @@
 var newChart = function () {
 	var chart = new CanvasJS.Chart("chartContainer", {
 		title:{
-			text: "My First Chart in CanvasJS"
+			text: "stats"
 		},
 		data: [
 		{
 			// Change type to "doughnut", "line", "splineArea", etc.
-			type: "column",
+			type: "doughnut",
 			dataPoints: imgs
 		}
 		]
