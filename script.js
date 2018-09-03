@@ -1,25 +1,22 @@
 
 
-function introduction(){
-  var container = document.getElementById('intro');
-  var rules  = document.createElement('p');
-  container.appendChild(rules);
-  rules.innerText= "RuleThe following is a data analysis survey to see which products we should continue to sell and which we should probably get rid of. you will be presented with 3 pics choose your favorit one. Do this 15 times please";
-  var ready = document.createElement('button');
-  ready.setAttribute('onclick', 'hello()');
-  ready.innerText='ready'
-  container.appendChild(ready);
+function introduction() {
+  document.getElementsByClassName("showIntro").item(0).className = "";
 
-  
 }
 
-function hello(){
-  // var container = document.getElementById('intro');
-  // container.style.display="none";
-  document.getElementById("intro").style.display = "none";
-}
+// ======fade out transition=====
 
-//problem might be that we can only pass 1 pair when setting attribute
+// function fade(event) {
+//   console.log(event.target.src);
+//   var imagesToHide = document.getElementById('container').getElementsByTagName('img');
+//   for(var index = 0; index < imagesToHide.length; index++){
+//     imagesToHide.item(index).style.animation = '0.5s fade';
+//     // imagesToHide.item(index).style.animation = '0.5s ' + (index * 0.25) + 's imageByeBye';
+//   }
+//   setTimeout(addImages, 250);
+//   // addImages();
+// }
 
 var BusImages = function (fileName, y, label) {
   this.nameFile = fileName;
@@ -45,8 +42,6 @@ imgs.push(new BusImages('water_can.jpg', 0, 'Water Can'));
 imgs.push(new BusImages('wine_glass.jpg', 0, 'Wine Glass'));
 // console.log(imgs[1].nameFile);
 
-
-
 function addImages() {
   var container = document.getElementById('container');
   //this code clears the images instead of adding more images to it.
@@ -71,7 +66,7 @@ function addImages() {
   image.setAttribute('src', 'imgs/' + imgs[index].nameFile);
   image.addEventListener('click', tallyImgClick);
   container.appendChild(image);
-  // localStorage.setItem('images', JSON.stringify(imgs));
+  // // localStorage.setItem('images', JSON.stringify(imgs));
 }
 
 var table = document.createElement('table');
@@ -85,40 +80,56 @@ function displayRandom(min, max) {
 var clicks = 0;
 var progress = 0;
 function tallyImgClick(event) {
-  // document.getElementById('progress-bar').style.width = Math.round(clicks / 13 * 100) + '%';
-  document.getElementById('progress-bar').style.width = Math.round(clicks / 14 * 100) + '%';
 
 
   var source = event.target.src.split('/');
   var sourceName = source[source.length - 1];
-  if(clicks < 15){
+  if (clicks < 15) {
     clicks++;
-    addImages();
+    // addImages();
+    fade();
     lastPicked(sourceName);
   }
-  
-  if(clicks === 15){
+  document.getElementById('progress-bar').style.width = Math.round(clicks / 15 * 100) + '%';
+
+  if (clicks === 15) {
     newChart();
     container.innerText = '';
+    //display reload button 
+    document.getElementsByClassName("showReset").item(0).className = "";
+
   }
-  
+
   for (i = 0; i < imgs.length; i++) {
     if (sourceName === imgs[i].nameFile) {
       console.log(imgs[i].y++);
-      
+
     }
   }
   console.log(sourceName);
   localStorage.setItem('imgs', JSON.stringify(imgs));
 }
-
-function lastPicked (sourceName){
-  var container= document.getElementById('lastClicked');
+// ==tally mark==
+function lastPicked(sourceName) {
+  var container = document.getElementById('lastClicked');
   var img = document.createElement('img');
   img.setAttribute('src', 'imgs/' + sourceName);
   container.appendChild(img);
 }
-function reload(){
+// ==transition==
+function fade() {
+  // console.log(event.target.src);
+  var imagesToHide = document.getElementById('container').getElementsByTagName('img');
+  for (var index = 0; index < imagesToHide.length; index++) {
+    imagesToHide.item(index).style.animation = '0.5s fade';
+    // imagesToHide.item(index).style.animation = '0.5s ' + (index * 0.25) + 's imageByeBye';
+  }
+  setTimeout(addImages, 250);
+  // addImages();
+}
+
+
+function reload() {
   window.location.reload();
 }
 
@@ -131,10 +142,9 @@ function imagesLocal() {
       var img = localImg[index];
       imgs.push(new BusImages(img.nameFile, img.y, img.label));
     }
-  }                              
+  }
 }
 
-window.addEventListener('load', introduction);
 window.addEventListener('load', imagesLocal);
 window.addEventListener('load', addImages);
 

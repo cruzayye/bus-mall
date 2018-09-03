@@ -12,18 +12,18 @@
     <title>Bus-Mall</title>
 
 </head>
-<body>
-    <header>
-        <h1>Analytical Survey</h1>
+<body class="showIntro">
+    <header >
+        <h1>Data Analysis</h1>
 
     </header>
-
-    <div id="intro">
-         <!-- <p><span>Rule </span>The following is a data analysis survey to see which products we should continue to sell and which we should probably get rid of. you will be presented with 3 pics choose your favorit one. Do this 15 times please!</p>
+    
+    <div class="intro" >
+         <p><span>Rule </span>The following is a data analysis survey to see which products we should continue to sell and which we should probably get rid of. you will be presented with 3 pics choose your favorite one. Do this 15 times please!</p>
         
         <div id="ready">
-        <input type="button" value="gi" >
-        </div> -->
+        <input type="button" value="ready" onclick="introduction()" >
+        </div>
 
 
     </div> 
@@ -31,7 +31,7 @@
     <div id="lastClicked">
     </div>
 
-    <div id="container">
+    <div id="container" class="hide">
     </div>
 
     <div>
@@ -45,14 +45,14 @@
         <div id="progress-bar"></div>
     </section>
 
-    <section id = "result">
-    </section>
+
     <div id="chartContainer" >
     </div>
-
-<div id = "reset-button">
-    <button type="button" id="reset" onclick="reload()">reset</button>
-</div>
+<section class="showReset">
+    <div class="reset-button">
+        <button type="button" onclick="reload()">reset</button>
+    </div>
+</section>
 </body>
 
 </html>

@@ -1,7 +1,9 @@
 body{
     background-color: #330E0C;
+    /* background-color: white; */
     margin: 0px;
 }
+
 header{
     background-color:#FF443B;
     color:white;
@@ -15,19 +17,26 @@ h1{
 }
 /* this is the goal:Need to get the page to freeze https://www.goodyear.com/en-US/tire/search/1993_Lexus_GS300_Standard_3575 */
 
-#intro {
+.intro input{
+    margin-top: 2%;
+}
+.intro {
     position: fixed;
-    display: flex;
-    flex-wrap: wrap;
-
-    justify-content: center;
+    display: none;
     text-align: center;
     background-color: white;
     margin: 0 20%;
     padding: 2%;
     margin-top: 5%;
     border: 10px black solid;
+    z-index: -10;
     
+}
+
+.showIntro .intro {
+    display: block;
+    z-index: 10;
+
 }
 
 #ready{
@@ -35,6 +44,10 @@ h1{
     justify-content: center;
     width: 100%;
 }
+
+
+
+
 
 
 
@@ -62,8 +75,13 @@ h1{
 
 }
 
+.showIntro img{
+    opacity: 0;
+}
+
 img{
     height: 250px;
+    
 }
 
 
@@ -74,6 +92,28 @@ img{
     /* border-top: solid red 2px; */
 }
 
+img{
+    transition: all .25s;
+}
+
+ img:hover{
+    transform: scale(1.1);
+    box-shadow: 0 15px 30px rgba(248, 145, 145, 0.5);
+
+}
+
+
+
+.showIntro img:hover{
+    transform: none;
+    box-shadow: none;
+    
+
+}
+
+
+
+
 
 td{
     background-color: #FF443B;
@@ -83,6 +123,30 @@ td{
 #imgClicked img{
     height: 100px;
 }
+
+
+/* marks code:
+@keyframes imageByeBye {
+    from {
+      height: 250px;
+    }
+    to {
+      height: 0px;
+    }
+  } */
+  /* .hide {
+    animation: 1s fade;
+  } */
+ 
+ @keyframes fade {
+     from{
+         opacity: 1;
+     }
+     to{
+         opacity: 0;
+     }
+    }
+
 
 #status-bar{
     display: flex;
@@ -163,17 +227,33 @@ h3{
     justify-content: center;
     width: 50%;
     margin-top: 2%;
+    margin-bottom:2%;
     /* position: absolute; */
     
 }
 
-#reset-button{
+.reset-button{
+    display: center;
     text-align: center;
-    position: relative;
-    bottom: 10%;
-
-
+    margin-top: 30%;
+    margin-bottom: 2%;
+    
+    
+    
 }
+
+.showReset .reset-button{
+    display: none;
+    
+}
+
+
+
+
+
+
+
+
 .canvasjs-chart-credit{
     display: none;
 

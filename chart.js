@@ -3,10 +3,17 @@ var newChart = function () {
 		title:{
 			text: "stats"
 		},
+		axisX:{        
+			interval: 1
+		  },
+		// axisY{
+		// 	interval: 1;
+
+		// },
 		data: [
 		{
 			// Change type to "doughnut", "line", "splineArea", etc.
-			type: "doughnut",
+			type: "column",
 			dataPoints: imgs
 		}
 		]
